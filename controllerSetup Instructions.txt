@@ -1,0 +1,8 @@
+How to set up compatibility with multiple controllers in Unity
+
+1. Download Input Manage: https://github.com/pbhogan/InControl
+2. Copy the contents of the 'Assets' folder from the download into the assets folder of your Unity project
+3. Let Unity import new files (does automatically)
+4. Go 'Edit > Project Settings > InControl > Set Up Input Manager Settings'
+5. Create Game Object > Create Other > InController > ...
+6. 
