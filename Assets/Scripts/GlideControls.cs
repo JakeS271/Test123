@@ -1,43 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
 public class GlideControls : MonoBehaviour {
 
     public float smooth = 0.75f, tiltAngle = 1.0f;
     private float lift, drag;
-    private Vector3 velocity;
-    public Vector3 acceleration, force;
+    private Vector3 velocity = new Vector3(0,0,30);
+    public Vector3 acceleration, force, maxVelocity;
+
+    private Vector3 angles = Vector3.zero;
 
 	// Use this for initialization
 	void Start ()
     {
+
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
-        if (transform.eulerAngles.x > 88 && transform.eulerAngles.x < 270)
-        {
-            transform.Rotate(-tiltAngle * smooth, 0, 0);
-        }
-        //transform.rotation = new Quaternion(Mathf.Clamp(transform.rotation.x, -88f, 88f),0,0,0);
-        if((transform.eulerAngles.x >= 0 && transform.eulerAngles.x <= 88) || (transform.eulerAngles.x >= 270 && transform.eulerAngles.x <= 360))
-        {
-            if (Input.GetKey("w") || Input.GetKey("up"))
-            {
-                transform.Rotate(tiltAngle * smooth, 0, 0);
-            }
-            if (Input.GetKey("s") || Input.GetKey("down"))
-            {
-                transform.Rotate(-tiltAngle * smooth, 0, 0);
-            }
-        }
+        InputDevice device = InputManager.Devices[0];
 
-        //transform.Rotate(Time.deltaTime * smooth, 0, 0);
+        float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
+        float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
-        /*float tiltZ = Input.GetAxis("Horizontal") * tiltAngle;
-        float tiltX = Input.GetAxis("Vertical") * tiltAngle;
-        Quaternion target = Quaternion.Euler(tiltX, 0, tiltZ);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);*/	
+        angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+        angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+        angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+        transform.eulerAngles = angles;
+
+        /*if (Mathf.Abs(horizontal < 0.1f))
+        {
+
+        }*/
+
+        transform.position += transform.forward * Time.deltaTime * 30.0f; //* velocity; 
+
+
 	}
 }
