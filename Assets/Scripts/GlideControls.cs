@@ -6,7 +6,7 @@ public class GlideControls : MonoBehaviour {
 
     public float smooth = 0.75f, tiltAngle = 1.0f;
     private float lift, drag;
-    private Vector3 velocity = new Vector3(0,0,30);
+    //private Vector3 velocity = new Vector3(0,0,30);
     public Vector3 acceleration, force, maxVelocity;
 
     private Vector3 angles = Vector3.zero;
