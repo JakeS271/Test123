@@ -25,17 +25,12 @@ public class GlideControls : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
         float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
-        if (device != null)
+        if (device != null) ;
         {
             angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
             angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
             angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-            transform.eulerAngles = angles;
-
-            /*if (Mathf.Abs(horizontal < 0.1f))
-            {
-
-            }*/
+            transform.eulerAngles = angles;            
 
             transform.position += transform.forward * Time.deltaTime * 30.0f; //* velocity;
         }

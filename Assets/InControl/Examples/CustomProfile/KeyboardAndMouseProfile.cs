@@ -31,12 +31,12 @@ namespace CustomProfileExample
 
 			ButtonMappings = new[]
 			{
-				new InputControlMapping
-				{
-					Handle = "Fire - Mouse",
-					Target = InputControlType.Action1,
-					Source = MouseButton0
-				},
+				//new InputControlMapping
+				//{
+				//	Handle = "Fire - Mouse",
+				//	Target = InputControlType.Action1,
+				//	Source = MouseButton0
+				//},
 				new InputControlMapping
 				{
 					Handle = "Fire - Keyboard",
@@ -44,31 +44,31 @@ namespace CustomProfileExample
 					// KeyCodeButton fires when any of the provided KeyCode params are down.
 					Source = KeyCodeButton( KeyCode.F, KeyCode.Return )
 				},
-				new InputControlMapping
-				{
-					Handle = "AltFire",
-					Target = InputControlType.Action2,
-					Source = MouseButton2
-				},
-				new InputControlMapping
-				{
-					Handle = "Middle",
-					Target = InputControlType.Action3,
-					Source = MouseButton1
-				},
+				//new InputControlMapping
+				//{
+				//	Handle = "AltFire",
+				//	Target = InputControlType.Action2,
+				//	Source = MouseButton2
+				//},
+				//new InputControlMapping
+				//{
+				//	Handle = "Middle",
+				//	Target = InputControlType.Action3,
+				//	Source = MouseButton1
+				//},
 				new InputControlMapping
 				{
 					Handle = "Jump",
 					Target = InputControlType.Action4,
 					Source = KeyCodeButton( KeyCode.Space )
 				},
-				new InputControlMapping
-				{
-					Handle = "Combo",
-					Target = InputControlType.LeftBumper,
-					// KeyCodeComboButton requires that all KeyCode params are down simultaneously.
-					Source = KeyCodeComboButton( KeyCode.LeftAlt, KeyCode.Alpha1 )
-				},
+				//new InputControlMapping
+				//{
+				//	Handle = "Combo",
+				//	Target = InputControlType.LeftBumper,
+				//	// KeyCodeComboButton requires that all KeyCode params are down simultaneously.
+				//	Source = KeyCodeComboButton( KeyCode.LeftAlt, KeyCode.Alpha1 )
+				//},
 			};
 
 			AnalogMappings = new[]
@@ -97,30 +97,30 @@ namespace CustomProfileExample
 					Target = InputControlType.LeftStickY,
 					Source = KeyCodeAxis( KeyCode.DownArrow, KeyCode.UpArrow )
 				},
-				new InputControlMapping
-				{
-					Handle = "Look X",
-					Target = InputControlType.RightStickX,
-					Source = MouseXAxis,
-					Raw    = true,
-					Scale  = 0.1f
-				},
-				new InputControlMapping
-				{
-					Handle = "Look Y",
-					Target = InputControlType.RightStickY,
-					Source = MouseYAxis,
-					Raw    = true,
-					Scale  = 0.1f
-				},
-				new InputControlMapping
-				{
-					Handle = "Look Z",
-					Target = InputControlType.ScrollWheel,
-					Source = MouseScrollWheel,
-					Raw    = true,
-					Scale  = 0.1f
-				}
+				//new InputControlMapping
+				//{
+				//	Handle = "Look X",
+				//	Target = InputControlType.RightStickX,
+				//	Source = MouseXAxis,
+				//	Raw    = true,
+				//	Scale  = 0.1f
+				//},
+				//new InputControlMapping
+				//{
+				//	Handle = "Look Y",
+				//	Target = InputControlType.RightStickY,
+				//	Source = MouseYAxis,
+				//	Raw    = true,
+				//	Scale  = 0.1f
+				//},
+				//new InputControlMapping
+				//{
+				//	Handle = "Look Z",
+				//	Target = InputControlType.ScrollWheel,
+				//	Source = MouseScrollWheel,
+				//	Raw    = true,
+				//	Scale  = 0.1f
+				//}
 			};
 		}
 	}
