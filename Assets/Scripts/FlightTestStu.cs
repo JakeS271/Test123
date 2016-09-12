@@ -45,8 +45,11 @@ public class FlightTestStu : MonoBehaviour
 //			}	
 
 			// mathf.Clamp is to keep the numbers between the range, -90,90
-			// 
+			// horizontal is working out if the player is pressing left or right; if its 0, no movement happens
+			// sets the z angle to itself + the horizontal ( direction ) * the tilt angle to alter how fast it rotates, * deltaTime for smoothing, and the range -90,90
             angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90); 
+			// makes the player always try to rotate back to 0
+			// the more the player moves away from 0, it keeps trying to rotate back, but the players controls override the difference
 			angles.z = Mathf.LerpAngle (angles.z, 0, Time.deltaTime * 2.0f);
 
             angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
