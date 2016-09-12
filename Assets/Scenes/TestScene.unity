@@ -165,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 66774254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 64.27, z: 0.01}
+  m_LocalPosition: {x: -0.22, y: 82.06, z: 0.01}
   m_LocalScale: {x: 1, y: 0.38864523, z: 5.6605225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -185,10 +185,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 2
   tiltAngle: 45
-  acceleration: 30
-  maxVelocity: 500
-  upDeccelerate: 50
-  downAccelerate: 30
+  acceleration: 100
+  maxVelocity: 200
+  upDeccelerate: 65
+  downAccelerate: 50
 --- !u!54 &66774260
 Rigidbody:
   m_ObjectHideFlags: 0
