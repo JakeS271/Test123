@@ -4,10 +4,10 @@ using InControl;
 
 public class GlideControls : MonoBehaviour {
 
-    public float smooth = 0.75f, tiltAngle = 1.0f, leftBoarder = 10.0f, rightBoarder= -10.0f;
-    private float lift, drag;
+    public float smooth = 1.0f, tiltAngle = 1.0f, acceleration = 30.0f;
+    public float maxVelocity, upDeccelerate, downAccelerate;
+    private float lift, drag, minVelocity = 0;
     //private Vector3 velocity = new Vector3(0,0,30);
-    public Vector3 acceleration, force, maxVelocity;
 
     private Vector3 angles = Vector3.zero;
 
@@ -27,39 +27,39 @@ public class GlideControls : MonoBehaviour {
 
         if (device != null) 
         {
-            if (horizontal != 0)
-            {
-                angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
-                angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-                transform.eulerAngles = angles;
-            }
-            if (vertical != 0)
-            {
-                angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
-                transform.eulerAngles = angles;
-            }
-            else
-            {
-                angles.z = 0;
-                Vector3 q = new Vector3(transform.rotation.x, transform.rotation.y, 0);
-                transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, q, Time.deltaTime);
-            }
-            
+            angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
 
-            
-            transform.position += transform.forward * Time.deltaTime * 30.0f; //* velocity;
-            //if(angles.y <= leftBoarder && angles.y >= rightBoarder)
-            //{
-            //    if (horizontal == 0)
-            //    {
-            //        angles.z = angles.z - tiltAngle * Time.deltaTime;
-            //        print("Is Between");
-            //    }
-            //}
-            
-            
-
+            angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+            angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+            angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+            transform.eulerAngles = angles;
+                 
+            transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
         }
       
 	}
+
+    float Accelerate()
+    {
+        if(angles.x > 0)
+        {
+            // if you are facing down, accelerate quickly
+            acceleration += angles.x / downAccelerate;                      
+        }
+        else if (angles.x < 0)
+        {
+            // if you are facing up, deccelerate slowly - slower than you speed up going down
+            acceleration += angles.x / upDeccelerate;            
+        }
+        
+        if (acceleration < minVelocity)
+        {
+            acceleration = minVelocity;
+        }
+        else if (acceleration > maxVelocity)
+        {
+            acceleration = maxVelocity;
+        }
+        return acceleration;
+    }
 }
