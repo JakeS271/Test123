@@ -5,105 +5,71 @@ using InControl;
 public class FlightTestStu : MonoBehaviour
 {
 
-    public float smooth = 0.75f, tiltAngle = 1.0f, leftBoarder = 10.0f, rightBoarder = -10.0f;
-    private float lift, drag;
-    //private Vector3 velocity = new Vector3(0,0,30);
-	bool moveLeft = false;
-	bool moveRight = false;
-    public Vector3 acceleration, force, maxVelocity;
+	public float smooth = 1.0f, tiltAngle = 1.0f, acceleration = 30.0f;
+	public float maxVelocity, accelTimer = 0, upDeccelerate = 150, downAccelerate = 165;
+	private float lift, drag, minVelocity = 0;
+	private bool travelDownSet, travelUpSet;
+	//private Vector3 velocity = new Vector3(0,0,30);
 
-    private Vector3 angles = Vector3.zero;
+	private Vector3 angles = Vector3.zero;
 
     // Use this for initialization
     void Start()    {    }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        InputDevice device = InputManager.Devices[0];
+	void FixedUpdate ()
+	{
+		InputDevice device = InputManager.Devices[0];
 
-        float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
-        float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
+		float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
+		float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
-        if (device != null)
-        {			
-//			if(Input.GetKeyDown("left") || Input.GetKeyDown("a"))
-//			{
-//				moveLeft = true;
-//			}
-//			if(Input.GetKeyUp("left") || Input.GetKeyUp("a"))
-//			{
-//				moveLeft = false;
-//			}
-//			if(Input.GetKeyDown("right") || Input.GetKeyDown("d"))
-//			{
-//				moveRight = true;
-//			}	
-//			if(Input.GetKeyUp("right") || Input.GetKeyUp("d"))
-//			{
-//				moveRight = false;
-//			}	
+		if (device != null) 
+		{
+			angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
+			angles.x = Mathf.LerpAngle(angles.x, 90, Time.deltaTime * 0.1f);
 
-			// mathf.Clamp is to keep the numbers between the range, -90,90
-			// horizontal is working out if the player is pressing left or right; if its 0, no movement happens
-			// sets the z angle to itself + the horizontal ( direction ) * the tilt angle to alter how fast it rotates, * deltaTime for smoothing, and the range -90,90
-            angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90); 
-			// makes the player always try to rotate back to 0
-			// the more the player moves away from 0, it keeps trying to rotate back, but the players controls override the difference
-			angles.z = Mathf.LerpAngle (angles.z, 0, Time.deltaTime * 2.0f);
+			angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+			angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+			angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+			transform.eulerAngles = angles;
 
-            angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-            angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90); 
-            transform.eulerAngles = angles;           
+			transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
+		}
+	}
 
-            transform.position += transform.forward * Time.deltaTime * 30.0f;
+	float Accelerate()
+	{
+		
+//		acceleration += angles.x / TimeFactor();   
 
-//			if (transform.rotation.z < 0 && moveLeft == false)
-//			{
-//				
-//				//angles.z = 0;
-//				//Vector3 q = new Vector3(transform.rotation.x, transform.rotation.y, 0);
-//				//transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, q, Time.deltaTime);			
-//			}
-//			else if (transform.rotation.z > 0 && moveRight == false)
-//			{
-//				//angles.z = 0;
-//				//Vector3 q = new Vector3(transform.rotation.x, transform.rotation.y, 0);
-//				//transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, q, -Time.deltaTime);	
-//			}
+		if(angles.x > 0)
+		{
+			// if you are facing down, accelerate quickly
+			acceleration += angles.x / (downAccelerate );  
 
-            //if (horizontal != 0)
-            //{
-            //    angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
-            //    angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-            //    transform.eulerAngles = angles;
-            //}
-            //if (vertical != 0)
-            //{
-            //    angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
-            //    transform.eulerAngles = angles;
-            //}
-            //else
-            //{
-            //    angles.z = 0;
-            //    Vector3 q = new Vector3(transform.rotation.x, transform.rotation.y, 0);
-            //    transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, q, Time.deltaTime);
-            //}
+		}
+		else if (angles.x < 0)
+		{
+			// if you are facing up, deccelerate slowly - slower than you speed up going down
+			acceleration += angles.x / (upDeccelerate );            
+		}
 
 
-            //* velocity;
-            //if(angles.y <= leftBoarder && angles.y >= rightBoarder)
-            //{
-            //    if (horizontal == 0)
-            //    {
-            //        angles.z = angles.z - tiltAngle * Time.deltaTime;
-            //        print("Is Between");
-            //    }
-            //}
+		if (acceleration < minVelocity)
+		{
+			acceleration = minVelocity;
+		}
+		else if (acceleration > maxVelocity)
+		{
+			acceleration = maxVelocity;
+		}
+		return acceleration;
+	}
 
-
-
-        }
-
-    }
+	float TimeFactor()
+	{		
+		accelTimer -= 1;
+		return accelTimer;
+	}
 }
