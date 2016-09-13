@@ -18,7 +18,10 @@ public class GlideControls : MonoBehaviour {
     [Tooltip("The lowest the speed can be.")]
     private float minVelocity = 0;
     //private Vector3 velocity = new Vector3(0,0,30);
+    bool lvlcomplete;
 
+    [Tooltip("A list of objects.")]
+    public Transform[] yelOrb;
     private Vector3 angles = Vector3.zero;
 
 	// Use this for initialization
@@ -72,5 +75,27 @@ public class GlideControls : MonoBehaviour {
             acceleration = maxVelocity;
         }
         return acceleration;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        foreach (Transform orb in yelOrb)
+        {
+            if (col.gameObject == orb.gameObject)
+            {
+                //Debug.Log ("You had a collision");
+                orb.gameObject.SetActive(false);
+            }
+        }
+        //check if level is complete
+        foreach (Transform orb in yelOrb)
+        {
+            if (orb.gameObject.activeSelf == true)
+            {
+                lvlcomplete = false;
+                break;
+            }
+            lvlcomplete = true;
+        }
     }
 }
