@@ -3,10 +3,20 @@ using System.Collections;
 using InControl;
 
 public class GlideControls : MonoBehaviour {
-
-    public float smooth = 1.0f, tiltAngle = 1.0f, acceleration = 30.0f;
-    public float maxVelocity, upDeccelerate, downAccelerate;
-    private float lift, drag, minVelocity = 0;
+    [Tooltip("Is the speed at which the glider realigns itself.")]
+    public float smooth = 1.0f;
+    [Tooltip("Is the speed at which the glider rotates.")]
+    public float tiltAngle = 1.0f;
+    [Tooltip("How fast it can accelerate.")]
+    public float acceleration = 30.0f;
+    [Tooltip("It's max speed.")]
+    public float maxVelocity;
+    [Tooltip("How quickly it slows down we aimed upward.")]
+    public float upDeccelerate;
+    [Tooltip("How fast it accelerates when aimed downward.")]
+    public float downAccelerate;
+    [Tooltip("The lowest the speed can be.")]
+    private float minVelocity = 0;
     //private Vector3 velocity = new Vector3(0,0,30);
 
     private Vector3 angles = Vector3.zero;
@@ -28,6 +38,7 @@ public class GlideControls : MonoBehaviour {
         if (device != null) 
         {
             angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
+            angles.x = Mathf.LerpAngle(angles.x, 90, Time.deltaTime * 0.1f);
 
             angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
             angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
