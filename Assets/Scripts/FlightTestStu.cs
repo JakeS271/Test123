@@ -9,6 +9,7 @@ public class FlightTestStu : MonoBehaviour
 	public float maxVelocity, accelTimer = 0, upDeccelerate = 150, downAccelerate = 165;
 	private float lift, drag, minVelocity = 0;
 	private bool travelDownSet, travelUpSet;
+	public Transform yelOrb;
 	//private Vector3 velocity = new Vector3(0,0,30);
 
 	private Vector3 angles = Vector3.zero;
@@ -24,10 +25,12 @@ public class FlightTestStu : MonoBehaviour
 		float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
 		float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
+
+
 		if (device != null) 
 		{
 			angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-			angles.x = Mathf.LerpAngle(angles.x, 90, Time.deltaTime * 0.1f);
+			angles.x = Mathf.LerpAngle(angles.x, 5, Time.deltaTime * 0.1f);
 
 			angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
 			angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
@@ -35,6 +38,17 @@ public class FlightTestStu : MonoBehaviour
 			transform.eulerAngles = angles;
 
 			transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
+
+			//Debug.Log(transform.forward);
+		}
+	}
+
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.gameObject == yelOrb.gameObject) 
+		{
+			//Debug.Log ("You had a collision");
+			Destroy(yelOrb.gameObject);
 		}
 	}
 
