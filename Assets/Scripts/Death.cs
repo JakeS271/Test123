@@ -19,8 +19,13 @@ public class Death : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        explosion.gameObject.transform.position = transform.position; 
+
         explosion.Play();
         Debug.Log("Collided");
+
+        transform.GetChild(0).parent = null;
+
         Destroy(gameObject);
     }
 
