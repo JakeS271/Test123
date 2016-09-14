@@ -2,7 +2,7 @@
 using System.Collections;
 using InControl;
 
-public class FlightTestStu : MonoBehaviour
+public class GravityFlightController : MonoBehaviour
 {
 
 	public float smooth = 1.0f, tiltAngle = 1.0f, acceleration = 30.0f;
@@ -45,10 +45,10 @@ public class FlightTestStu : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (col.gameObject == yelOrb.gameObject) 
+		if (col.gameObject.tag == "Yellow Orb") 
 		{
 			//Debug.Log ("You had a collision");
-			Destroy(yelOrb.gameObject);
+			Destroy(col.gameObject);
 		}
 	}
 
