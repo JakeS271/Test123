@@ -2,7 +2,7 @@
 using System.Collections;
 using InControl;
 
-public class GlideControls : MonoBehaviour {
+public class NoGravityFlightController : MonoBehaviour {
     [Tooltip("Is the speed at which the glider realigns itself.")]
     public float smooth = 1.0f;
     [Tooltip("Is the speed at which the glider rotates.")]
