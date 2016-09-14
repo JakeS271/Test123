@@ -6,15 +6,15 @@ public class GlideControls : MonoBehaviour {
     [Tooltip("Is the speed at which the glider realigns itself.")]
     public float smooth = 1.0f;
     [Tooltip("Is the speed at which the glider rotates.")]
-    public float tiltAngle = 1.0f;
+    public float tiltAngle = 45.0f;
     [Tooltip("How fast it can accelerate.")]
     public float acceleration = 30.0f;
     [Tooltip("It's max speed.")]
-    public float maxVelocity;
+    public float maxVelocity = 100;
     [Tooltip("How quickly it slows down we aimed upward.")]
-    public float upDeccelerate;
+    public float upDeccelerate = 65;
     [Tooltip("How fast it accelerates when aimed downward.")]
-    public float downAccelerate;
+    public float downAccelerate = 50;
     [Tooltip("The lowest the speed can be.")]
     private float minVelocity = 0;
     //private Vector3 velocity = new Vector3(0,0,30);
@@ -33,24 +33,20 @@ public class GlideControls : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        InputDevice device = InputManager.Devices[0];
+        InputDevice device = InputManager.ActiveDevice;
 
         float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
         float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
-        if (device != null) 
-        {
-            angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-            angles.x = Mathf.LerpAngle(angles.x, 90, Time.deltaTime * 0.1f);
+        angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
+        angles.x = Mathf.LerpAngle(angles.x, 10, Time.deltaTime * 0.4f);
 
-            angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
-            angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-            angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
-            transform.eulerAngles = angles;
+        angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+        angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+        angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+        transform.eulerAngles = angles;
                  
-            transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
-        }
-      
+        transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;      
 	}
 
     float Accelerate()
