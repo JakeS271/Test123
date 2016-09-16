@@ -4,22 +4,25 @@ using InControl;
 
 public class GravityFlightController : MonoBehaviour
 {
-
-	[Tooltip("Is the speed at which the glider realigns itself.")]
+	[Tooltip("The speed at which the glider realigns itself.")]
 	public float smooth = 1.0f;
-	[Tooltip("Is the speed at which the glider rotates.")]
+	[Tooltip("The speed at which the glider rotates.")]
 	public float tiltAngle = 45.0f;
-	[Tooltip("How fast it can accelerate.")]
+	[Tooltip("Angle the glider readjusts to when controls are released.")]
+	public float readjustAngle = 10;
+	[Tooltip("The speed the glider readjusts when controls are released.")]
+	public float readjustRate = 0.4f;
+	[Tooltip("How fast the glider can accelerate.")]
 	public float acceleration = 30.0f;
-	[Tooltip("It's max speed.")]
+	[Tooltip("The glider's max speed.")]
 	public float maxVelocity = 100;
-	[Tooltip("How quickly it slows down when aimed upward.")]
+	[Tooltip("How quickly the glider slows down when aimed upward.")]
 	public float upDeccelerate = 65;
-	[Tooltip("How fast it accelerates when aimed downward.")]
+	[Tooltip("How fast the glider accelerates when aimed downward.")]
 	public float downAccelerate = 50;
-	[Tooltip("The lowest possible speed.")]
+	[Tooltip("The lowest possible flight speed.")]
 	private float minVelocity = 0;
-
+	[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	public Transform yelOrb;
 	//private Vector3 velocity = new Vector3(0,0,30);
 
@@ -41,7 +44,7 @@ public class GravityFlightController : MonoBehaviour
 		if (device != null) 
 		{
 			angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-			angles.x = Mathf.LerpAngle(angles.x, 10, Time.deltaTime * 0.4f);
+			angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
 
 			angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
 			angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
