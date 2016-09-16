@@ -185,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smooth: 2
   tiltAngle: 45
+  readjustAngle: 10
+  readjustRate: 0.4
   acceleration: 50
   maxVelocity: 110
   upDeccelerate: 100

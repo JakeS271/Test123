@@ -40,7 +40,6 @@ public class GravityFlightController : MonoBehaviour
 		float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
 
-
 		if (device != null) 
 		{
 			angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
