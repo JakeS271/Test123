@@ -41,7 +41,7 @@ public class GravityFlightController : MonoBehaviour
 		if (device != null) 
 		{
 			angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-			angles.x = Mathf.LerpAngle(angles.x, 5, Time.deltaTime * 0.1f);
+			angles.x = Mathf.LerpAngle(angles.x, 10, Time.deltaTime * 0.4f);
 
 			angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
 			angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
@@ -89,11 +89,5 @@ public class GravityFlightController : MonoBehaviour
 			acceleration = maxVelocity;
 		}
 		return acceleration;
-	}
-
-	float TimeFactor()
-	{		
-		accelTimer -= 1;
-		return accelTimer;
 	}
 }
