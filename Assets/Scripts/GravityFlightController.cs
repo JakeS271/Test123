@@ -5,10 +5,21 @@ using InControl;
 public class GravityFlightController : MonoBehaviour
 {
 
-	public float smooth = 1.0f, tiltAngle = 1.0f, acceleration = 30.0f;
-	public float maxVelocity, accelTimer = 0, upDeccelerate = 150, downAccelerate = 165;
-	private float lift, drag, minVelocity = 0;
-	private bool travelDownSet, travelUpSet;
+	[Tooltip("Is the speed at which the glider realigns itself.")]
+	public float smooth = 1.0f;
+	[Tooltip("Is the speed at which the glider rotates.")]
+	public float tiltAngle = 45.0f;
+	[Tooltip("How fast it can accelerate.")]
+	public float acceleration = 30.0f;
+	[Tooltip("It's max speed.")]
+	public float maxVelocity = 100;
+	[Tooltip("How quickly it slows down when aimed upward.")]
+	public float upDeccelerate = 65;
+	[Tooltip("How fast it accelerates when aimed downward.")]
+	public float downAccelerate = 50;
+	[Tooltip("The lowest possible speed.")]
+	private float minVelocity = 0;
+
 	public Transform yelOrb;
 	//private Vector3 velocity = new Vector3(0,0,30);
 
@@ -46,8 +57,7 @@ public class GravityFlightController : MonoBehaviour
 	void OnTriggerEnter(Collider col)
 	{
 		if (col.gameObject.tag == "Yellow Orb") 
-		{
-			//Debug.Log ("You had a collision");
+		{			
 			Destroy(col.gameObject);
 		}
 	}

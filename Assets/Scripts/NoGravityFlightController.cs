@@ -11,17 +11,17 @@ public class NoGravityFlightController : MonoBehaviour {
     public float acceleration = 30.0f;
     [Tooltip("It's max speed.")]
     public float maxVelocity = 100;
-    [Tooltip("How quickly it slows down we aimed upward.")]
+    [Tooltip("How quickly it slows down when aimed upward.")]
     public float upDeccelerate = 65;
     [Tooltip("How fast it accelerates when aimed downward.")]
     public float downAccelerate = 50;
-    [Tooltip("The lowest the speed can be.")]
+	[Tooltip("The lowest possible speed.")]
     private float minVelocity = 0;
     //private Vector3 velocity = new Vector3(0,0,30);
     bool lvlcomplete;
 
-    [Tooltip("A list of objects.")]
-    public Transform[] yelOrb;
+    [Tooltip("The yellow orb target.")]
+    public Transform yelOrb;
     private Vector3 angles = Vector3.zero;
 
 	// Use this for initialization
@@ -75,23 +75,20 @@ public class NoGravityFlightController : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        foreach (Transform orb in yelOrb)
-        {
-            if (col.gameObject == orb.gameObject)
-            {
-                //Debug.Log ("You had a collision");
-                orb.gameObject.SetActive(false);
-            }
-        }
+		if (col.gameObject.tag == "Yellow Orb") 
+		{			
+			Destroy(col.gameObject);
+		}
+
         //check if level is complete
-        foreach (Transform orb in yelOrb)
-        {
-            if (orb.gameObject.activeSelf == true)
-            {
-                lvlcomplete = false;
-                break;
-            }
-            lvlcomplete = true;
-        }
+//        foreach (Transform orb in yelOrb)
+//        {
+//            if (orb.gameObject.activeSelf == true)
+//            {
+//                lvlcomplete = false;
+//                break;
+//            }
+//            lvlcomplete = true;
+//        }
     }
 }
