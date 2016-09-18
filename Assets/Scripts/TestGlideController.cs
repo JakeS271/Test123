@@ -2,7 +2,7 @@
 using System.Collections;
 using InControl;
 
-public class GravityFlightController : MonoBehaviour
+public class TestGlideController : MonoBehaviour 
 {
 	[Tooltip("Whether to use this objects artificial gravity or not.")]
 	public bool useGravity = true;
@@ -25,61 +25,39 @@ public class GravityFlightController : MonoBehaviour
 	[Tooltip("The lowest possible flight speed.")]
 	private float minVelocity = 0;
 	[Tooltip("The yellow orb target - to obtain it's transform values.")]
-	public Transform yelOrb;
+	public Transform yelOrb;    
+
 	//private Vector3 velocity = new Vector3(0,0,30);
+    bool lvlcomplete;    
+    private Vector3 angles = Vector3.zero;
 
-	private Vector3 angles = Vector3.zero;
+	// Use this for initialization
+	void Start ()
+    {
 
-    // Use this for initialization
-    void Start()    {    }
-
-    // Update is called once per frame
+	}
+	
+	// Update is called once per frame
 	void FixedUpdate ()
-	{
-		InputDevice device = InputManager.Devices[0];
+    {
+        InputDevice device = InputManager.ActiveDevice;
 
-		float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
-		float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
+        float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
+        float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
+        angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
+		angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
 
-		if (device != null) 
-		{
-			angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-			angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
-
-			angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
-			angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-			angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
-			transform.eulerAngles = angles;
-
-			if (acceleration > minVelocity)
-			{
-				transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
-			}
-			else
-			{
-				Vector3 gravity = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * Accelerate()), transform.position.z);
-				transform.position = gravity;
-			}
-
-
-			//Debug.Log(transform.forward);
-		}
+        angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+        angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+        angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+        transform.eulerAngles = angles;
+                 
+        transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;      
 	}
 
-	void OnTriggerEnter(Collider col)
-	{
-		if (col.gameObject.tag == "Yellow Orb") 
-		{			
-			Destroy(col.gameObject);
-		}
-	}
-
-	float Accelerate()
-	{
-		
-//		acceleration += angles.x / TimeFactor();   
-
+    float Accelerate()
+    {
 		// If glider pointed downward and acceleration greater than 0, start to speed up
 		if(angles.x > 0 && acceleration > 0)
 		{
@@ -115,5 +93,24 @@ public class GravityFlightController : MonoBehaviour
 			acceleration = maxVelocity;
 		}
 		return acceleration;
-	}
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+		if (col.gameObject.tag == "Yellow Orb") 
+		{			
+			Destroy(col.gameObject);
+		}
+
+        //check if level is complete
+//        foreach (Transform orb in yelOrb)
+//        {
+//            if (orb.gameObject.activeSelf == true)
+//            {
+//                lvlcomplete = false;
+//                break;
+//            }
+//            lvlcomplete = true;
+//        }
+    }
 }
