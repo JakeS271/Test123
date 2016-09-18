@@ -4,6 +4,8 @@ using InControl;
 
 public class NoGravityFlightController : MonoBehaviour 
 {
+	[Tooltip("Whether to use this objects artificial gravity or not.")]
+	public bool useGravity = true;
 	[Tooltip("The speed at which the glider realigns itself.")]
 	public float smooth = 1.0f;
 	[Tooltip("The speed at which the glider rotates.")]
@@ -56,26 +58,41 @@ public class NoGravityFlightController : MonoBehaviour
 
     float Accelerate()
     {
-        if(angles.x > 0)
-        {
-            // if you are facing down, accelerate quickly
-            acceleration += angles.x / downAccelerate;                      
-        }
-        else if (angles.x < 0)
-        {
-            // if you are facing up, deccelerate slowly - slower than you speed up going down
-            acceleration += angles.x / upDeccelerate;            
-        }
-        
-        if (acceleration < minVelocity)
-        {
-            acceleration = minVelocity;
-        }
-        else if (acceleration > maxVelocity)
-        {
-            acceleration = maxVelocity;
-        }
-        return acceleration;
+		// If glider pointed downward and acceleration greater than 0, start to speed up
+		if(angles.x > 0 && acceleration > 0)
+		{
+			// if you are facing down, accelerate quickly
+			acceleration += angles.x / (downAccelerate );  
+
+		}
+		// else if glider pointed down but acceleration is in the negatives due to gravity, after upward flight, 
+		// convert the negative acceleration (used for gravity pull) into positive downwards acceleration
+		else if (angles.x > 0 && acceleration < 0)
+		{
+			// if you are facing up, deccelerate slowly - slower than you speed up going down
+			acceleration *= -1;            
+		}
+		else if (angles.x < 0)
+		{
+			// if you are facing up, deccelerate slowly - slower than you speed up going down
+			acceleration += angles.x / (upDeccelerate );            
+		}
+
+
+
+		if (acceleration < minVelocity)
+		{
+			// if in built gravity is not in use, reset acceleration to 0
+			if(useGravity == false)
+			{
+				acceleration = minVelocity;
+			}
+		}
+		else if (acceleration > maxVelocity)
+		{
+			acceleration = maxVelocity;
+		}
+		return acceleration;
     }
 
     void OnTriggerEnter(Collider col)

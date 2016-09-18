@@ -4,6 +4,8 @@ using InControl;
 
 public class GravityFlightController : MonoBehaviour
 {
+	[Tooltip("Whether to use this objects artificial gravity or not.")]
+	public bool useGravity = true;
 	[Tooltip("The speed at which the glider realigns itself.")]
 	public float smooth = 1.0f;
 	[Tooltip("The speed at which the glider rotates.")]
@@ -50,7 +52,16 @@ public class GravityFlightController : MonoBehaviour
 			angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
 			transform.eulerAngles = angles;
 
-			transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
+			if (acceleration > minVelocity)
+			{
+				transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
+			}
+			else
+			{
+				Vector3 gravity = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * Accelerate()), transform.position.z);
+				transform.position = gravity;
+			}
+
 
 			//Debug.Log(transform.forward);
 		}
@@ -69,11 +80,19 @@ public class GravityFlightController : MonoBehaviour
 		
 //		acceleration += angles.x / TimeFactor();   
 
-		if(angles.x > 0)
+		// If glider pointed downward and acceleration greater than 0, start to speed up
+		if(angles.x > 0 && acceleration > 0)
 		{
 			// if you are facing down, accelerate quickly
 			acceleration += angles.x / (downAccelerate );  
 
+		}
+		// else if glider pointed down but acceleration is in the negatives due to gravity, after upward flight, 
+		// convert the negative acceleration (used for gravity pull) into positive downwards acceleration
+		else if (angles.x > 0 && acceleration < 0)
+		{
+			// if you are facing up, deccelerate slowly - slower than you speed up going down
+			acceleration *= -1;            
 		}
 		else if (angles.x < 0)
 		{
@@ -82,9 +101,14 @@ public class GravityFlightController : MonoBehaviour
 		}
 
 
+
 		if (acceleration < minVelocity)
 		{
-			acceleration = minVelocity;
+			// if in built gravity is not in use, reset acceleration to 0
+			if(useGravity == false)
+			{
+				acceleration = minVelocity;
+			}
 		}
 		else if (acceleration > maxVelocity)
 		{
