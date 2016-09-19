@@ -27,6 +27,12 @@ public class TestGlideController : MonoBehaviour
 	[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	public Transform yelOrb;    
 
+    public bool IsFalling
+    {
+        get { return isFalling; }
+    }
+
+
 	//private Vector3 velocity = new Vector3(0,0,30);
     bool lvlcomplete, isFalling = false;    
     private Vector3 angles = Vector3.zero;
@@ -129,9 +135,5 @@ public class TestGlideController : MonoBehaviour
 //            }
 //            lvlcomplete = true;
 //        }
-    }
-    public bool getIsFalling()
-    {
-        return isFalling;
     } 
 }
