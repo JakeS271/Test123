@@ -2,7 +2,7 @@
 using System.Collections;
 using InControl;
 
-public class TestGlideController2 : MonoBehaviour
+public class GlideController : MonoBehaviour
 {
 	[Tooltip("Whether to use this objects artificial gravity or not.")]
 	public bool useGravity = true;
