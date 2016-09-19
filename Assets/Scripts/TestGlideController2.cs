@@ -23,7 +23,7 @@ public class TestGlideController2 : MonoBehaviour {
 	[Tooltip("How fast the glider accelerates when aimed downward.")]
 	public float downAccelerate = 50;
 
-	public float dashValue = 100;;
+	public float dashValue = 100;
 
 	[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	public Transform yelOrb;
