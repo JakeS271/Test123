@@ -33,6 +33,8 @@ public class TestGlideController2 : MonoBehaviour
     // Use this for initialization
     void Start()    {    }
 
+
+
     // Update is called once per frame
 	void FixedUpdate ()
 	{
@@ -40,7 +42,6 @@ public class TestGlideController2 : MonoBehaviour
 
 		float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
 		float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
-
 
 		if (device != null) 
 		{
