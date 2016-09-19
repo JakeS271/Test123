@@ -28,7 +28,7 @@ public class TestGlideController : MonoBehaviour
 	public Transform yelOrb;    
 
 	//private Vector3 velocity = new Vector3(0,0,30);
-    bool lvlcomplete;    
+    bool lvlcomplete, isFalling = false;    
     private Vector3 angles = Vector3.zero;
 
 	// Use this for initialization
@@ -40,21 +40,36 @@ public class TestGlideController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        InputDevice device = InputManager.ActiveDevice;
+        //if(acceleration >= 0)
+        //{
+            InputDevice device = InputManager.ActiveDevice;
 
-        float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
-        float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
+            float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
+            float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
-        angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-		angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
+            angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
+            angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
 
-        angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
-        angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-        angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
-        transform.eulerAngles = angles;
-                 
-        transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;      
-	}
+            angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+            angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+            angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+            transform.eulerAngles = angles;
+
+        if (acceleration > minVelocity)
+        {
+            transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
+        }
+        else
+        {
+            Vector3 gravity = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * Accelerate()), transform.position.z);
+            transform.position = gravity;
+        }
+        /*}
+        else
+        {
+            acceleration = 0;
+        }*/
+    }
 
     float Accelerate()
     {
@@ -62,21 +77,23 @@ public class TestGlideController : MonoBehaviour
 		if(angles.x > 0 && acceleration > 0)
 		{
 			// if you are facing down, accelerate quickly
-			acceleration += angles.x / (downAccelerate );  
-
+			acceleration += angles.x / (downAccelerate );
+            isFalling = false;
 		}
 		// else if glider pointed down but acceleration is in the negatives due to gravity, after upward flight, 
 		// convert the negative acceleration (used for gravity pull) into positive downwards acceleration
 		else if (angles.x > 0 && acceleration < 0)
 		{
 			// if you are facing up, deccelerate slowly - slower than you speed up going down
-			acceleration *= -1;            
-		}
+			acceleration *= -1;
+            isFalling = true;
+        }
 		else if (angles.x < 0)
 		{
 			// if you are facing up, deccelerate slowly - slower than you speed up going down
-			acceleration += angles.x / (upDeccelerate );            
-		}
+			acceleration += angles.x / (upDeccelerate );
+            isFalling = true;
+        }
 
 
 
@@ -113,4 +130,8 @@ public class TestGlideController : MonoBehaviour
 //            lvlcomplete = true;
 //        }
     }
+    public bool getIsFalling()
+    {
+        return isFalling;
+    } 
 }

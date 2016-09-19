@@ -3,28 +3,27 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour
 {
-    //public Transform followObject;
-    //public Vector3 offset = new Vector3(0,0,25);
-    //private Vector3 position = Vector3.zero, angle = Vector3.zero;
+    public Transform followTarget;
+    public float positionOffset = 0.1f;
+    public float rotationOffset = 0.1f;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-        //offset = transform.position - target.position;
     }
 	
 	// Update is called once per frame
-	void LateUpdate ()
+	void FixedUpdate ()
     {
-        //transform.LookAt(followObject);
-
-//        position.x = followObject.transform.position.x - offset.x;
-//        position.y = followObject.transform.position.y - offset.y;
-//        position.z = followObject.transform.position.z - offset.z;
-//        transform.position = position;
-
-//        angle.x = followObject.gameObject.transform.eulerAngles.x;
-//        angle.y = followObject.gameObject.transform.eulerAngles.y;
-//        transform.eulerAngles = angle;
+        if(followTarget)
+        {
+            if (Vector3.Distance(transform.position, followTarget.transform.position) > 3)
+            {
+                followTarget.parent.gameObject.GetComponent < TestGlideController >
+                if ()
+                transform.position = Vector3.Lerp(transform.position, followTarget.transform.position, positionOffset);
+                transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, positionOffset);
+            }
+        }
     }
 }
