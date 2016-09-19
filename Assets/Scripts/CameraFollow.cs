@@ -19,8 +19,8 @@ public class CameraFollow : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, followTarget.transform.position) > 3)
             {
-                followTarget.parent.gameObject.GetComponent < TestGlideController >
-                if ()
+                //followTarget.parent.gameObject.GetComponent < TestGlideController >
+                //if ()
                 transform.position = Vector3.Lerp(transform.position, followTarget.transform.position, positionOffset);
                 transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, positionOffset);
             }
