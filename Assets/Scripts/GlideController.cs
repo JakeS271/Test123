@@ -2,8 +2,8 @@
 using System.Collections;
 using InControl;
 
-public class TestGlideController2 : MonoBehaviour {
-
+public class GlideController : MonoBehaviour
+{
 	[Tooltip("Whether to use this objects artificial gravity or not.")]
 	public bool useGravity = true;
 	[Tooltip("The speed at which the glider realigns itself.")]
@@ -22,23 +22,20 @@ public class TestGlideController2 : MonoBehaviour {
 	public float upDeccelerate = 65;
 	[Tooltip("How fast the glider accelerates when aimed downward.")]
 	public float downAccelerate = 50;
-
-	public float dashValue = 100;
-
+	[Tooltip("The lowest possible flight speed.")]
+	private float minVelocity = 0;
 	[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	public Transform yelOrb;
-
-
-	private float minVelocity = 0; // The lowest possible flight speed.
-
 	//private Vector3 velocity = new Vector3(0,0,30);
 
 	private Vector3 angles = Vector3.zero;
 
-	// Use this for initialization
-	void Start() { }
+    // Use this for initialization
+    void Start()    {    }
 
-	// Update is called once per frame
+
+
+    // Update is called once per frame
 	void FixedUpdate ()
 	{
 		InputDevice device = InputManager.Devices[0];
