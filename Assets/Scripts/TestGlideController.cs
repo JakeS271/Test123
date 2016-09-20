@@ -24,8 +24,8 @@ public class TestGlideController : MonoBehaviour
 	public float downAccelerate = 50;
 	[Tooltip("The lowest possible flight speed.")]
 	private float minVelocity = 0;
-	[Tooltip("The yellow orb target - to obtain it's transform values.")]
-	public Transform yelOrb;    
+	//[Tooltip("The yellow orb target - to obtain it's transform values.")]
+	//public Transform yelOrb;    
 
     public bool IsFalling
     {
@@ -98,8 +98,6 @@ public class TestGlideController : MonoBehaviour
 			acceleration += angles.x / (upDeccelerate );
         }
 
-
-
 		if (acceleration < minVelocity)
 		{
 			// if in built gravity is not in use, reset acceleration to 0
@@ -121,16 +119,5 @@ public class TestGlideController : MonoBehaviour
 		{			
 			Destroy(col.gameObject);
 		}
-
-        //check if level is complete
-//        foreach (Transform orb in yelOrb)
-//        {
-//            if (orb.gameObject.activeSelf == true)
-//            {
-//                lvlcomplete = false;
-//                break;
-//            }
-//            lvlcomplete = true;
-//        }
     } 
 }

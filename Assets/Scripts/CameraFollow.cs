@@ -9,7 +9,6 @@ public class CameraFollow : MonoBehaviour
     public float fallingRotation = 90.0f;
     public float fallingPositionOffset = 30.0f;
 
-    private Vector3 angles = Vector3.zero;
     // Use this for initialization
     void Start ()
     {
@@ -30,12 +29,13 @@ public class CameraFollow : MonoBehaviour
                 }
                 else if(target.GetComponent<TestGlideController>().acceleration <= 0)
                 {
-                    Vector3 currentRotation = transform.eulerAngles, currentPosition = transform.position;
+                    transform.LookAt(target.transform);
+                    /*Vector3 currentRotation = transform.eulerAngles, currentPosition = transform.position;
 
                     currentPosition.y = Mathf.Lerp(currentPosition.y, currentPosition.y + fallingPositionOffset, positionOffset);
                     currentRotation.x = Mathf.Lerp(currentRotation.x, currentRotation.x + fallingRotation, rotationOffset);
                     transform.eulerAngles = currentRotation;
-                    transform.position = currentPosition;
+                    transform.position = currentPosition;*/
                 }
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);
