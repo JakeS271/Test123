@@ -84,7 +84,6 @@ public class TestGlideController : MonoBehaviour
 		{
 			// if you are facing down, accelerate quickly
 			acceleration += angles.x / (downAccelerate );
-            isFalling = false;
 		}
 		// else if glider pointed down but acceleration is in the negatives due to gravity, after upward flight, 
 		// convert the negative acceleration (used for gravity pull) into positive downwards acceleration
@@ -92,13 +91,11 @@ public class TestGlideController : MonoBehaviour
 		{
 			// if you are facing up, deccelerate slowly - slower than you speed up going down
 			acceleration *= -1;
-            isFalling = true;
         }
 		else if (angles.x < 0)
 		{
 			// if you are facing up, deccelerate slowly - slower than you speed up going down
 			acceleration += angles.x / (upDeccelerate );
-            isFalling = true;
         }
 
 
@@ -109,7 +106,7 @@ public class TestGlideController : MonoBehaviour
 			if(useGravity == false)
 			{
 				acceleration = minVelocity;
-			}
+            }
 		}
 		else if (acceleration > maxVelocity)
 		{

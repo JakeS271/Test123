@@ -6,6 +6,8 @@ public class CameraFollow : MonoBehaviour
     public Transform followTarget;
     public float positionOffset = 0.1f;
     public float rotationOffset = 0.1f;
+    public float fallingRotation = 90.0f;
+    public float fallingPositionOffset = 30.0f;
 
     private Vector3 angles = Vector3.zero;
     // Use this for initialization
@@ -22,26 +24,23 @@ public class CameraFollow : MonoBehaviour
             {
                 GameObject target = followTarget.transform.parent.gameObject;
 
-                /*if (target.GetComponent<TestGlideController>().IsFalling == false)
+                if (target.GetComponent<TestGlideController>().acceleration >= 1)
                 {
                     transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);
                 }
-                else if(target.GetComponent<TestGlideController>().IsFalling == true)
+                else if(target.GetComponent<TestGlideController>().acceleration <= 0)
                 {
-                    transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, 0.9f);
-                }*/
+                    Vector3 currentRotation = transform.eulerAngles, currentPosition = transform.position;
+
+                    currentPosition.y = Mathf.Lerp(currentPosition.y, currentPosition.y + fallingPositionOffset, positionOffset);
+                    currentRotation.x = Mathf.Lerp(currentRotation.x, currentRotation.x + fallingRotation, rotationOffset);
+                    transform.eulerAngles = currentRotation;
+                    transform.position = currentPosition;
+                }
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);
                 transform.position = Vector3.Lerp(transform.position, followTarget.transform.position, positionOffset);
 
-                //Quaternion q = new Quaternion(angles);
-
-                angles.x = angles.x + 45.0f;
-                angles.y = transform.eulerAngles.y;
-                angles.z = transform.eulerAngles.z;
-                //transform.eulerAngles = angles;
-
-                //transform.rotation = Quaternion.Lerp(transform.rotation, angles, rotationOffset);
             }
         }
     }
