@@ -29,14 +29,14 @@ public class CameraFollow : MonoBehaviour
                 }
                 else if(target.GetComponent<TestGlideController>().acceleration <= 0)
                 {
-                    //transform.LookAt(target.transform);
+                    transform.LookAt(target.transform);
 
-                    Vector3 currentRotation = transform.eulerAngles, currentPosition = transform.position;
+                    /*Vector3 currentRotation = transform.eulerAngles, currentPosition = transform.position;
 
                     //currentPosition.y = Mathf.Lerp(currentPosition.y, currentPosition.y + fallingPositionOffset, positionOffset);
                     transform.rotation = Quaternion.Slerp(transform.rotation, target.transform.rotation, rotationOffset);
                     transform.eulerAngles = currentRotation;
-                    transform.position = currentPosition;
+                    transform.position = currentPosition;*/
                 }
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);
