@@ -2,10 +2,11 @@
 using System.Collections;
 using InControl;
 
-public class TestGlideController2 : MonoBehaviour {
+public class TestGlideController2 : MonoBehaviour 
+{
 
 	[Tooltip("Whether to use this objects artificial gravity or not.")]
-	public bool useGravity = true;
+	public bool artificialGravity = true;
 	[Tooltip("The speed at which the glider realigns itself.")]
 	public float smooth = 1.0f;
 	[Tooltip("The speed at which the glider rotates.")]
@@ -23,16 +24,10 @@ public class TestGlideController2 : MonoBehaviour {
 	[Tooltip("How fast the glider accelerates when aimed downward.")]
 	public float downAccelerate = 50;
 
-	public float dashValue = 100;
-
 	[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	public Transform yelOrb;
 
-
 	private float minVelocity = 0; // The lowest possible flight speed.
-
-	//private Vector3 velocity = new Vector3(0,0,30);
-
 	private Vector3 angles = Vector3.zero;
 
 	// Use this for initialization
@@ -65,6 +60,7 @@ public class TestGlideController2 : MonoBehaviour {
 				Vector3 gravity = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * Accelerate()), transform.position.z);
 				transform.position = gravity;
 			}
+
 		}
 	}
 
@@ -101,7 +97,7 @@ public class TestGlideController2 : MonoBehaviour {
 		if (acceleration < minVelocity)
 		{
 			// if in built gravity is not in use, reset acceleration to 0
-			if(useGravity == false)
+			if(artificialGravity == false)
 			{
 				acceleration = minVelocity;
 			}
@@ -112,4 +108,5 @@ public class TestGlideController2 : MonoBehaviour {
 		}
 		return acceleration;
 	}
+
 }
