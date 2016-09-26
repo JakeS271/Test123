@@ -51,9 +51,10 @@ public class TestGlideController : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
         float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
-
-        if(isRollingLeft == true)
+        
+        if (isRollingLeft == true)
         {
+            //gameObject
             angles.z = angles.z + tiltAngle * Time.deltaTime;
             if (angles.z == 0)
             {
