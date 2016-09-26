@@ -536,7 +536,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: fd3da3e9-ea1b-44cf-a5fe-7c980ff99679
+  projectName: TestGIT
+  organizationId: aie_software
   cloudEnabled: 0
