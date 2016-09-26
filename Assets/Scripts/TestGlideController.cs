@@ -24,6 +24,7 @@ public class TestGlideController : MonoBehaviour
 	public float downAccelerate = 50;
 	[Tooltip("The lowest possible flight speed.")]
 	private float minVelocity = 0;
+    private bool isRollingLeft = false, isRolingRight = false;
 	//[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	//public Transform yelOrb;    
 
@@ -46,35 +47,42 @@ public class TestGlideController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        //if(acceleration >= 0)
-        //{
-            InputDevice device = InputManager.ActiveDevice;
+        InputDevice device = InputManager.ActiveDevice;
 
-            float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
-            float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
+        float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
+        float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
 
-            angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
-            angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
+        if(isRollingLeft == true)
+        {
+            angles.z = angles.z + tiltAngle * Time.deltaTime;
+            if (angles.z == 0)
+            {
+                isRollingLeft = false;
+            }
+        }
 
-            angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
-            angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
-            angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
-            transform.eulerAngles = angles;
+        angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
+        angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
+
+        angles.x = Mathf.Clamp(angles.x + vertical * tiltAngle * Time.deltaTime, -60, 90);
+        angles.y = angles.y + horizontal * tiltAngle * Time.deltaTime;
+        angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
+        transform.eulerAngles = angles;
 
         if (acceleration > minVelocity)
         {
-            transform.position += transform.forward * Time.deltaTime * Accelerate(); //* velocity;
+            transform.position += transform.forward * Time.deltaTime * Accelerate();
         }
         else
         {
             Vector3 gravity = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * Accelerate()), transform.position.z);
             transform.position = gravity;
         }
-        /*}
-        else
+  
+        if(Input.GetKeyDown("q")|| device.LeftBumper.IsPressed)
         {
-            acceleration = 0;
-        }*/
+            isRollingLeft = true;
+        }
     }
 
     float Accelerate()
