@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using InControl;
 
@@ -25,7 +26,7 @@ public class TestGlideController : MonoBehaviour
 	[Tooltip("The lowest possible flight speed.")]
 	private float minVelocity = 0;
     private int score = 0;
-    public GUIText scoreText;
+    public Text scoreText;
 	//[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	//public Transform yelOrb;    
 
