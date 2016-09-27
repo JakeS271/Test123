@@ -24,7 +24,8 @@ public class TestGlideController : MonoBehaviour
 	public float downAccelerate = 50;
 	[Tooltip("The lowest possible flight speed.")]
 	private float minVelocity = 0;
-    private bool isRollingLeft = false, isRolingRight = false;
+    private int score = 0;
+    public GUIText scoreText;
 	//[Tooltip("The yellow orb target - to obtain it's transform values.")]
 	//public Transform yelOrb;    
 
@@ -51,16 +52,6 @@ public class TestGlideController : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal") + device.LeftStick.X;
         float vertical = Input.GetAxis("Vertical") + device.LeftStick.Y;
-        
-        if (isRollingLeft == true)
-        {
-            //gameObject
-            angles.z = angles.z + tiltAngle * Time.deltaTime;
-            if (angles.z == 0)
-            {
-                isRollingLeft = false;
-            }
-        }
 
         angles.z = Mathf.LerpAngle(angles.z, 0, Time.deltaTime * smooth);
         angles.x = Mathf.LerpAngle(angles.x, readjustAngle, Time.deltaTime * readjustRate);
@@ -78,11 +69,6 @@ public class TestGlideController : MonoBehaviour
         {
             Vector3 gravity = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * Accelerate()), transform.position.z);
             transform.position = gravity;
-        }
-  
-        if(Input.GetKeyDown("q")|| device.LeftBumper.IsPressed)
-        {
-            isRollingLeft = true;
         }
     }
 
@@ -127,6 +113,13 @@ public class TestGlideController : MonoBehaviour
 		if (col.gameObject.tag == "Yellow Orb") 
 		{			
 			Destroy(col.gameObject);
+            AddScore(1);
 		}
+    }
+    
+    void AddScore(int s)
+    {
+        score += s;
+        scoreText.text = "Score: " + score; 
     } 
 }
