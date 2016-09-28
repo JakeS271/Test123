@@ -17,6 +17,6 @@ public class TimerScript : MonoBehaviour
 	void Update ()
     {
         TimeSpan time = TimeSpan.FromSeconds(Time.timeSinceLevelLoad);
-        timerText.text = string.Format("{0:D2}:{1:D2}", time.TotalMinutes, time.Seconds);
+        timerText.text = string.Format("{0:00}:{1:00}", time.TotalMinutes, time.Seconds);
     }
 }
