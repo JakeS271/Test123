@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e12939e8acb854f926a384d49b24a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useGravity: 1
+  artificialGravity: 1
   smooth: 1
   tiltAngle: 45
   readjustAngle: 10
@@ -220,4 +220,5 @@ MonoBehaviour:
   maxVelocity: 100
   upDeccelerate: 200
   downAccelerate: 5
+  yelOrb: {fileID: 0}
   scoreText: {fileID: 0}
