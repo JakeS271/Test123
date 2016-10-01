@@ -75,9 +75,9 @@ GameObject:
   - 33: {fileID: 33000010286478514}
   - 65: {fileID: 65000013064423148}
   - 23: {fileID: 23000010328319658}
-  - 114: {fileID: 114000013315330412}
   - 54: {fileID: 54000011706108564}
   - 114: {fileID: 114000012686074106}
+  - 114: {fileID: 114000010192366186}
   m_Layer: 0
   m_Name: Glider
   m_TagString: Untagged
@@ -299,6 +299,27 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012722112294}
   m_Enabled: 1
+--- !u!114 &114000010192366186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013262336176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d47f35ef5b0e47408946c7da8784166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  artificialGravity: 1
+  smooth: 1
+  tiltAngle: 45
+  readjustAngle: 10
+  readjustRate: 0.4
+  acceleration: 30
+  maxVelocity: 100
+  upDeccelerate: 65
+  downAccelerate: 50
+  yelOrb: {fileID: 0}
 --- !u!114 &114000012686074106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,28 +348,6 @@ MonoBehaviour:
   rotationOffset: 0.1
   fallingRotation: 90
   fallingPositionOffset: 30
---- !u!114 &114000013315330412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013262336176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e12939e8acb854f926a384d49b24a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  artificialGravity: 1
-  smooth: 1
-  tiltAngle: 45
-  readjustAngle: 10
-  readjustRate: 0.4
-  acceleration: 30
-  maxVelocity: 100
-  upDeccelerate: 200
-  downAccelerate: 5
-  yelOrb: {fileID: 0}
-  scoreText: {fileID: 0}
 --- !u!124 &124000013317895830
 Behaviour:
   m_ObjectHideFlags: 1
