@@ -15,7 +15,7 @@ public class DashScript : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		InputDevice device = InputManager.Devices[0];
+		InputDevice device = InputManager.ActiveDevice;
 
 		if (device != null) 
 		{		

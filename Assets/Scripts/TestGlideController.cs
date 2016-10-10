@@ -31,7 +31,9 @@ public class TestGlideController : MonoBehaviour
 	private Vector3 angles = Vector3.zero;
 
     private int score = 0;
-    public Text scoreText;  
+    public Text scoreText;
+
+    public LayerMask terrainLayer;
 
     public bool IsFalling
     {
