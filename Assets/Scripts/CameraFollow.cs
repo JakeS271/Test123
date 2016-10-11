@@ -23,11 +23,11 @@ public class CameraFollow : MonoBehaviour
             {
                 GameObject target = followTarget.transform.parent.gameObject;
 
-                if (target.GetComponent<TestGlideController>().acceleration >= 1)
+                if (target.GetComponent<GlideController>().acceleration >= 1)
                 {
                     transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);
                 }
-                else if(target.GetComponent<TestGlideController>().acceleration <= 0)
+                else if(target.GetComponent<GlideController>().acceleration <= 0)
                 {
                     transform.LookAt(target.transform);
                 }
