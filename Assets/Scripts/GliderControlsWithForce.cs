@@ -30,6 +30,8 @@ public class GliderControlsWithForce : MonoBehaviour
     private float minVelocity = 0; // The lowest possible flight speed.
     private Vector3 angles = Vector3.zero;
 
+    private Rigidbody rb;
+
     private int score = 0;
     public Text scoreText;
 
@@ -47,7 +49,8 @@ public class GliderControlsWithForce : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        //rb.WakeUp();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -66,7 +69,7 @@ public class GliderControlsWithForce : MonoBehaviour
         angles.z = Mathf.Clamp(angles.z + horizontal * -tiltAngle * Time.deltaTime, -90, 90);
         transform.eulerAngles = angles;
 
-        gameObject.GetComponent<Rigidbody>().velocity += transform.forward * Time.deltaTime * Accelerate();
+        rb.MovePosition(transform.position + (transform.forward * Time.deltaTime * Accelerate()));
     }
 
     float Accelerate()
@@ -76,6 +79,7 @@ public class GliderControlsWithForce : MonoBehaviour
         {
             // if you are facing down, accelerate quickly
             acceleration += angles.x / (downAccelerate);
+            Debug.Log(acceleration);
         }
         // else if glider pointed down but acceleration is in the negatives due to gravity, after upward flight, 
         // convert the negative acceleration (used for gravity pull) into positive downwards acceleration
@@ -83,11 +87,13 @@ public class GliderControlsWithForce : MonoBehaviour
         {
             // if you are facing up, deccelerate slowly - slower than you speed up going down
             acceleration *= -1;
+            Debug.Log(acceleration);
         }
         else if (angles.x < 0)
         {
             // if you are facing up, deccelerate slowly - slower than you speed up going down
             acceleration += angles.x / (upDeccelerate);
+            Debug.Log(acceleration);
         }
 
         if (acceleration < minVelocity)
@@ -96,11 +102,13 @@ public class GliderControlsWithForce : MonoBehaviour
             if (artificialGravity == false)
             {
                 acceleration = minVelocity;
+                Debug.Log(acceleration);
             }
         }
         else if (acceleration > maxVelocity)
         {
             acceleration = maxVelocity;
+            Debug.Log(acceleration);
         }
         return acceleration;
     }

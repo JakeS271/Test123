@@ -42,7 +42,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -71,7 +71,8 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: b5cd6ac30603c314c9f798673cc0ec0b,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -365,14 +366,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 380868423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b28f17e5b9b097048afecfcc96611244, type: 3}
+  m_Script: {fileID: 11500000, guid: 147fca05a3d84bc43abcbdcedab945e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 896137169}
   positionOffset: 0.1
   rotationOffset: 0.1
-  fallingRotation: 95
-  fallingPositionOffset: 10
+  fallingRotation: 90
+  fallingPositionOffset: 30
+  flightScript: {fileID: 0}
 --- !u!1 &388534316
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,11 +552,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010802212542, guid: f9493ee98de0958408db2eaef701416c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 81.58
       objectReference: {fileID: 0}
     - target: {fileID: 4000010802212542, guid: f9493ee98de0958408db2eaef701416c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 53.17
       objectReference: {fileID: 0}
     - target: {fileID: 4000010802212542, guid: f9493ee98de0958408db2eaef701416c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -598,9 +600,28 @@ Prefab:
     - target: {fileID: 54000010819544802, guid: f9493ee98de0958408db2eaef701416c,
         type: 2}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011960418030, guid: f9493ee98de0958408db2eaef701416c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000010819544802, guid: f9493ee98de0958408db2eaef701416c,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012876357940, guid: f9493ee98de0958408db2eaef701416c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000010819544802, guid: f9493ee98de0958408db2eaef701416c,
+        type: 2}
+      propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000013237477634, guid: f9493ee98de0958408db2eaef701416c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f9493ee98de0958408db2eaef701416c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &706327049
@@ -2689,6 +2710,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1115627212}
   - 114: {fileID: 1115627211}
+  - 114: {fileID: 1115627213}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2721,6 +2743,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+--- !u!114 &1115627213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115627210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060fa18fcc6d9204b95cdfb619d6f001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1236924764
 GameObject:
   m_ObjectHideFlags: 0
