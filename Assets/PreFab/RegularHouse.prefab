@@ -178,8 +178,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012169794888}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 345.56244, y: 347.60327, z: -5736.1997}
-  m_LocalScale: {x: 334.6126, y: 250.95221, z: 345.95062}
+  m_LocalPosition: {x: 65.1, y: 270.7, z: 205.6}
+  m_LocalScale: {x: 39.373493, y: 29.529259, z: 40.70761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000010042117744}
@@ -296,7 +296,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a2eb299fc849cc146ab123163496bbaa, type: 2}
+  - {fileID: 2100000, guid: 1864d1e34b0fde1418629f19df883113, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -325,7 +325,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a2eb299fc849cc146ab123163496bbaa, type: 2}
+  - {fileID: 2100000, guid: 1864d1e34b0fde1418629f19df883113, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -354,7 +354,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a2eb299fc849cc146ab123163496bbaa, type: 2}
+  - {fileID: 2100000, guid: 412de2029fc29e94596e1c1b5d1f0fbb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -383,7 +383,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a716b603d911924691e1b079a3fff7d, type: 2}
+  - {fileID: 2100000, guid: 1864d1e34b0fde1418629f19df883113, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -412,7 +412,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6a716b603d911924691e1b079a3fff7d, type: 2}
+  - {fileID: 2100000, guid: 412de2029fc29e94596e1c1b5d1f0fbb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
