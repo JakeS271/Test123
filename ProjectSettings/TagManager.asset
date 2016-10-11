@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Yellow Orb
+  - Ground
+  - Obstacle
   layers:
   - Default
   - TransparentFX
