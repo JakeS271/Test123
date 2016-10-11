@@ -9,9 +9,12 @@ public class CameraFollow : MonoBehaviour
     public float fallingRotation = 90.0f;
     public float fallingPositionOffset = 30.0f;
 
+    private TestGlideController glide;
+
     // Use this for initialization
     void Start ()
     {
+        glide = followTarget.transform.parent.gameObject.GetComponent<TestGlideController>();
     }
 	
 	// Update is called once per frame
@@ -23,11 +26,11 @@ public class CameraFollow : MonoBehaviour
             {
                 GameObject target = followTarget.transform.parent.gameObject;
 
-                if (target.GetComponent<TestGlideController>().acceleration >= 1)
+                if (glide.acceleration >= 1)
                 {
                     transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);
                 }
-                else if(target.GetComponent<TestGlideController>().acceleration <= 0)
+                else if(glide.acceleration <= 0)
                 {
                     transform.LookAt(target.transform);
                 }
