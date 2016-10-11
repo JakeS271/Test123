@@ -11,12 +11,13 @@ public class TimerScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        //Time.timeScale = 100f;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         TimeSpan time = TimeSpan.FromSeconds(Time.timeSinceLevelLoad);
-        timerText.text = string.Format("{0:D2}:{1:D2}", time.TotalMinutes, time.Seconds);
+        timerText.text = string.Format("{0:00}:{1:00}", time.Minutes + (60 * time.Hours), time.Seconds);
     }
 }

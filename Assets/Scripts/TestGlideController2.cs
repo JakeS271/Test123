@@ -19,9 +19,9 @@ public class TestGlideController2 : MonoBehaviour
 	public float acceleration = 30.0f;
 	[Tooltip("The glider's max speed.")]
 	public float maxVelocity = 100;
-	[Tooltip("How quickly the glider slows down when aimed upward.")]
+	[Tooltip("How quickly the glider slows when aimed upward. Smaller numbers means faster deceleration.")]
 	public float upDeccelerate = 65;
-	[Tooltip("How fast the glider accelerates when aimed downward.")]
+	[Tooltip("How fast the glider accelerates when aimed downward. Smaller numbers means faster acceleration.")]
 	public float downAccelerate = 50;
 
 	[Tooltip("The yellow orb target - to obtain it's transform values.")]
