@@ -9,12 +9,12 @@ public class CameraFollow : MonoBehaviour
     public float fallingRotation = 90.0f;
     public float fallingPositionOffset = 30.0f;
 
-    private TestGlideController glide;
+    private GlideController glide;
 
     // Use this for initialization
     void Start ()
     {
-        glide = followTarget.transform.parent.gameObject.GetComponent<TestGlideController>();
+        glide = followTarget.transform.parent.gameObject.GetComponent<GlideController>();
     }
 	
 	// Update is called once per frame

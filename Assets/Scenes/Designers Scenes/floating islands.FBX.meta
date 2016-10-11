@@ -1,0 +1,627 @@
+fileFormatVersion: 2
+guid: 0fe0b2fb828e0a640b746870a4bb6c08
+timeCreated: 1475029302
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Camera01
+    100002: Camera01.Target
+    100004: FDirect01
+    100006: //RootNode
+    100008: GeoSphere01
+    100010: Grass
+    100012: Grass01
+    100014: Grass02
+    100016: ground
+    100018: ground01
+    100020: ground02
+    100022: Island
+    100024: Island01
+    100026: Island02
+    100028: Rock
+    100030: Tree
+    100032: Tree round
+    100034: Tree round01
+    100036: Tree round02
+    100038: Tree round03
+    100040: Tree round04
+    100042: Tree round05
+    100044: Tree round06
+    100046: Tree round07
+    100048: Tree round08
+    100050: Tree round09
+    100052: Tree round10
+    100054: Tree round11
+    100056: Tree round12
+    100058: Tree round13
+    100060: Tree round14
+    100062: Tree round15
+    100064: Tree round16
+    100066: Tree round17
+    100068: Tree round18
+    100070: Tree round19
+    100072: Tree round20
+    100074: Tree round21
+    100076: Tree round22
+    100078: Tree round23
+    100080: Tree round24
+    100082: Tree round25
+    100084: Tree round26
+    100086: Tree round27
+    100088: Tree round28
+    100090: Tree round29
+    100092: Tree round30
+    100094: Tree round31
+    100096: Tree round32
+    100098: Tree round33
+    100100: Tree round34
+    100102: Tree round35
+    100104: Tree round36
+    100106: Tree round37
+    100108: Tree round38
+    100110: Tree round39
+    100112: Tree round40
+    100114: Tree01
+    100116: Tree02
+    100118: Tree03
+    100120: Tree04
+    100122: Tree05
+    100124: Tree06
+    100126: Tree07
+    100128: Tree08
+    100130: Tree09
+    100132: Tree10
+    100134: Tree11
+    100136: Tree12
+    100138: Tree13
+    100140: Tree14
+    100142: Tree15
+    100144: Tree16
+    100146: Tree17
+    100148: Tree18
+    100150: Tree19
+    100152: Tree20
+    100154: Tree21
+    100156: Tree22
+    100158: Tree23
+    100160: Tree24
+    100162: Tree25
+    100164: Tree26
+    100166: Tree27
+    100168: Tree28
+    100170: Tree29
+    100172: Tree30
+    100174: Tree31
+    100176: Tree32
+    100178: Tree33
+    100180: Tree34
+    100182: Tree35
+    100184: Tree36
+    100186: Tree37
+    100188: Tree38
+    100190: Tree39
+    100192: Tree40
+    100194: Treetrunk
+    100196: Treetrunk01
+    100198: Treetrunk02
+    100200: Treetrunk03
+    100202: Treetrunk04
+    100204: Treetrunk05
+    100206: Treetrunk06
+    100208: Treetrunk07
+    100210: Treetrunk08
+    100212: Treetrunk09
+    100214: Treetrunk10
+    100216: Treetrunk11
+    100218: Treetrunk12
+    100220: Treetrunk13
+    100222: Treetrunk14
+    100224: Treetrunk15
+    100226: Treetrunk16
+    100228: Treetrunk17
+    100230: Treetrunk18
+    100232: Treetrunk19
+    100234: Treetrunk20
+    100236: Treetrunk21
+    100238: Treetrunk22
+    100240: Treetrunk23
+    100242: Treetrunk24
+    100244: Treetrunk25
+    100246: Treetrunk26
+    100248: Treetrunk27
+    100250: Treetrunk28
+    100252: Treetrunk29
+    100254: Treetrunk30
+    100256: Treetrunk31
+    100258: Treetrunk32
+    100260: Treetrunk33
+    100262: Treetrunk34
+    100264: Treetrunk35
+    100266: Treetrunk36
+    100268: Treetrunk37
+    100270: Treetrunk38
+    100272: Treetrunk39
+    100274: Treetrunk40
+    100276: Water
+    100278: Water01
+    400000: Camera01
+    400002: Camera01.Target
+    400004: FDirect01
+    400006: //RootNode
+    400008: GeoSphere01
+    400010: Grass
+    400012: Grass01
+    400014: Grass02
+    400016: ground
+    400018: ground01
+    400020: ground02
+    400022: Island
+    400024: Island01
+    400026: Island02
+    400028: Rock
+    400030: Tree
+    400032: Tree round
+    400034: Tree round01
+    400036: Tree round02
+    400038: Tree round03
+    400040: Tree round04
+    400042: Tree round05
+    400044: Tree round06
+    400046: Tree round07
+    400048: Tree round08
+    400050: Tree round09
+    400052: Tree round10
+    400054: Tree round11
+    400056: Tree round12
+    400058: Tree round13
+    400060: Tree round14
+    400062: Tree round15
+    400064: Tree round16
+    400066: Tree round17
+    400068: Tree round18
+    400070: Tree round19
+    400072: Tree round20
+    400074: Tree round21
+    400076: Tree round22
+    400078: Tree round23
+    400080: Tree round24
+    400082: Tree round25
+    400084: Tree round26
+    400086: Tree round27
+    400088: Tree round28
+    400090: Tree round29
+    400092: Tree round30
+    400094: Tree round31
+    400096: Tree round32
+    400098: Tree round33
+    400100: Tree round34
+    400102: Tree round35
+    400104: Tree round36
+    400106: Tree round37
+    400108: Tree round38
+    400110: Tree round39
+    400112: Tree round40
+    400114: Tree01
+    400116: Tree02
+    400118: Tree03
+    400120: Tree04
+    400122: Tree05
+    400124: Tree06
+    400126: Tree07
+    400128: Tree08
+    400130: Tree09
+    400132: Tree10
+    400134: Tree11
+    400136: Tree12
+    400138: Tree13
+    400140: Tree14
+    400142: Tree15
+    400144: Tree16
+    400146: Tree17
+    400148: Tree18
+    400150: Tree19
+    400152: Tree20
+    400154: Tree21
+    400156: Tree22
+    400158: Tree23
+    400160: Tree24
+    400162: Tree25
+    400164: Tree26
+    400166: Tree27
+    400168: Tree28
+    400170: Tree29
+    400172: Tree30
+    400174: Tree31
+    400176: Tree32
+    400178: Tree33
+    400180: Tree34
+    400182: Tree35
+    400184: Tree36
+    400186: Tree37
+    400188: Tree38
+    400190: Tree39
+    400192: Tree40
+    400194: Treetrunk
+    400196: Treetrunk01
+    400198: Treetrunk02
+    400200: Treetrunk03
+    400202: Treetrunk04
+    400204: Treetrunk05
+    400206: Treetrunk06
+    400208: Treetrunk07
+    400210: Treetrunk08
+    400212: Treetrunk09
+    400214: Treetrunk10
+    400216: Treetrunk11
+    400218: Treetrunk12
+    400220: Treetrunk13
+    400222: Treetrunk14
+    400224: Treetrunk15
+    400226: Treetrunk16
+    400228: Treetrunk17
+    400230: Treetrunk18
+    400232: Treetrunk19
+    400234: Treetrunk20
+    400236: Treetrunk21
+    400238: Treetrunk22
+    400240: Treetrunk23
+    400242: Treetrunk24
+    400244: Treetrunk25
+    400246: Treetrunk26
+    400248: Treetrunk27
+    400250: Treetrunk28
+    400252: Treetrunk29
+    400254: Treetrunk30
+    400256: Treetrunk31
+    400258: Treetrunk32
+    400260: Treetrunk33
+    400262: Treetrunk34
+    400264: Treetrunk35
+    400266: Treetrunk36
+    400268: Treetrunk37
+    400270: Treetrunk38
+    400272: Treetrunk39
+    400274: Treetrunk40
+    400276: Water
+    400278: Water01
+    2300000: GeoSphere01
+    2300002: Grass
+    2300004: Grass01
+    2300006: Grass02
+    2300008: ground
+    2300010: ground01
+    2300012: ground02
+    2300014: Rock
+    2300016: Tree round
+    2300018: Tree round01
+    2300020: Tree round02
+    2300022: Tree round03
+    2300024: Tree round04
+    2300026: Tree round05
+    2300028: Tree round06
+    2300030: Tree round07
+    2300032: Tree round08
+    2300034: Tree round09
+    2300036: Tree round10
+    2300038: Tree round11
+    2300040: Tree round12
+    2300042: Tree round13
+    2300044: Tree round14
+    2300046: Tree round15
+    2300048: Tree round16
+    2300050: Tree round17
+    2300052: Tree round18
+    2300054: Tree round19
+    2300056: Tree round20
+    2300058: Tree round21
+    2300060: Tree round22
+    2300062: Tree round23
+    2300064: Tree round24
+    2300066: Tree round25
+    2300068: Tree round26
+    2300070: Tree round27
+    2300072: Tree round28
+    2300074: Tree round29
+    2300076: Tree round30
+    2300078: Tree round31
+    2300080: Tree round32
+    2300082: Tree round33
+    2300084: Tree round34
+    2300086: Tree round35
+    2300088: Tree round36
+    2300090: Tree round37
+    2300092: Tree round38
+    2300094: Tree round39
+    2300096: Tree round40
+    2300098: Treetrunk
+    2300100: Treetrunk01
+    2300102: Treetrunk02
+    2300104: Treetrunk03
+    2300106: Treetrunk04
+    2300108: Treetrunk05
+    2300110: Treetrunk06
+    2300112: Treetrunk07
+    2300114: Treetrunk08
+    2300116: Treetrunk09
+    2300118: Treetrunk10
+    2300120: Treetrunk11
+    2300122: Treetrunk12
+    2300124: Treetrunk13
+    2300126: Treetrunk14
+    2300128: Treetrunk15
+    2300130: Treetrunk16
+    2300132: Treetrunk17
+    2300134: Treetrunk18
+    2300136: Treetrunk19
+    2300138: Treetrunk20
+    2300140: Treetrunk21
+    2300142: Treetrunk22
+    2300144: Treetrunk23
+    2300146: Treetrunk24
+    2300148: Treetrunk25
+    2300150: Treetrunk26
+    2300152: Treetrunk27
+    2300154: Treetrunk28
+    2300156: Treetrunk29
+    2300158: Treetrunk30
+    2300160: Treetrunk31
+    2300162: Treetrunk32
+    2300164: Treetrunk33
+    2300166: Treetrunk34
+    2300168: Treetrunk35
+    2300170: Treetrunk36
+    2300172: Treetrunk37
+    2300174: Treetrunk38
+    2300176: Treetrunk39
+    2300178: Treetrunk40
+    2300180: Water
+    2300182: Water01
+    3300000: GeoSphere01
+    3300002: Grass
+    3300004: Grass01
+    3300006: Grass02
+    3300008: ground
+    3300010: ground01
+    3300012: ground02
+    3300014: Rock
+    3300016: Tree round
+    3300018: Tree round01
+    3300020: Tree round02
+    3300022: Tree round03
+    3300024: Tree round04
+    3300026: Tree round05
+    3300028: Tree round06
+    3300030: Tree round07
+    3300032: Tree round08
+    3300034: Tree round09
+    3300036: Tree round10
+    3300038: Tree round11
+    3300040: Tree round12
+    3300042: Tree round13
+    3300044: Tree round14
+    3300046: Tree round15
+    3300048: Tree round16
+    3300050: Tree round17
+    3300052: Tree round18
+    3300054: Tree round19
+    3300056: Tree round20
+    3300058: Tree round21
+    3300060: Tree round22
+    3300062: Tree round23
+    3300064: Tree round24
+    3300066: Tree round25
+    3300068: Tree round26
+    3300070: Tree round27
+    3300072: Tree round28
+    3300074: Tree round29
+    3300076: Tree round30
+    3300078: Tree round31
+    3300080: Tree round32
+    3300082: Tree round33
+    3300084: Tree round34
+    3300086: Tree round35
+    3300088: Tree round36
+    3300090: Tree round37
+    3300092: Tree round38
+    3300094: Tree round39
+    3300096: Tree round40
+    3300098: Treetrunk
+    3300100: Treetrunk01
+    3300102: Treetrunk02
+    3300104: Treetrunk03
+    3300106: Treetrunk04
+    3300108: Treetrunk05
+    3300110: Treetrunk06
+    3300112: Treetrunk07
+    3300114: Treetrunk08
+    3300116: Treetrunk09
+    3300118: Treetrunk10
+    3300120: Treetrunk11
+    3300122: Treetrunk12
+    3300124: Treetrunk13
+    3300126: Treetrunk14
+    3300128: Treetrunk15
+    3300130: Treetrunk16
+    3300132: Treetrunk17
+    3300134: Treetrunk18
+    3300136: Treetrunk19
+    3300138: Treetrunk20
+    3300140: Treetrunk21
+    3300142: Treetrunk22
+    3300144: Treetrunk23
+    3300146: Treetrunk24
+    3300148: Treetrunk25
+    3300150: Treetrunk26
+    3300152: Treetrunk27
+    3300154: Treetrunk28
+    3300156: Treetrunk29
+    3300158: Treetrunk30
+    3300160: Treetrunk31
+    3300162: Treetrunk32
+    3300164: Treetrunk33
+    3300166: Treetrunk34
+    3300168: Treetrunk35
+    3300170: Treetrunk36
+    3300172: Treetrunk37
+    3300174: Treetrunk38
+    3300176: Treetrunk39
+    3300178: Treetrunk40
+    3300180: Water
+    3300182: Water01
+    4300000: Rock
+    4300002: Grass
+    4300004: ground
+    4300006: Grass01
+    4300008: ground01
+    4300010: Grass02
+    4300012: ground02
+    4300014: Treetrunk
+    4300016: Tree round
+    4300018: Tree round01
+    4300020: Treetrunk01
+    4300022: Tree round02
+    4300024: Treetrunk02
+    4300026: Tree round03
+    4300028: Treetrunk03
+    4300030: Tree round04
+    4300032: Treetrunk04
+    4300034: Tree round05
+    4300036: Treetrunk05
+    4300038: Tree round06
+    4300040: Treetrunk06
+    4300042: Tree round07
+    4300044: Treetrunk07
+    4300046: Water
+    4300048: Tree round08
+    4300050: Treetrunk08
+    4300052: Tree round09
+    4300054: Treetrunk09
+    4300056: Tree round10
+    4300058: Treetrunk10
+    4300060: Water01
+    4300062: Tree round11
+    4300064: Treetrunk11
+    4300066: Tree round12
+    4300068: Treetrunk12
+    4300070: Tree round13
+    4300072: Treetrunk13
+    4300074: Tree round14
+    4300076: Treetrunk14
+    4300078: Tree round15
+    4300080: Treetrunk15
+    4300082: Tree round16
+    4300084: Treetrunk16
+    4300086: Tree round17
+    4300088: Treetrunk17
+    4300090: Tree round18
+    4300092: Treetrunk18
+    4300094: Tree round19
+    4300096: Treetrunk19
+    4300098: Tree round20
+    4300100: Treetrunk20
+    4300102: Tree round21
+    4300104: Treetrunk21
+    4300106: Tree round22
+    4300108: Treetrunk22
+    4300110: Tree round23
+    4300112: Treetrunk23
+    4300114: Tree round24
+    4300116: Treetrunk24
+    4300118: Tree round25
+    4300120: Treetrunk25
+    4300122: Tree round26
+    4300124: Treetrunk26
+    4300126: Tree round27
+    4300128: Treetrunk27
+    4300130: Tree round28
+    4300132: Treetrunk28
+    4300134: GeoSphere01
+    4300136: Tree round29
+    4300138: Treetrunk29
+    4300140: Tree round30
+    4300142: Treetrunk30
+    4300144: Tree round31
+    4300146: Treetrunk31
+    4300148: Tree round32
+    4300150: Treetrunk32
+    4300152: Tree round33
+    4300154: Treetrunk33
+    4300156: Tree round34
+    4300158: Treetrunk34
+    4300160: Tree round35
+    4300162: Treetrunk35
+    4300164: Tree round36
+    4300166: Treetrunk36
+    4300168: Tree round37
+    4300170: Treetrunk37
+    4300172: Tree round38
+    4300174: Treetrunk38
+    4300176: Tree round39
+    4300178: Treetrunk39
+    4300180: Tree round40
+    4300182: Treetrunk40
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
