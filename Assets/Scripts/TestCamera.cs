@@ -34,6 +34,7 @@ public class TestCamera : MonoBehaviour
                 else if (glider.acceleration <= 0)
                 {
                     transform.LookAt(target.transform);
+                    transform.position
                 }
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, followTarget.transform.rotation, rotationOffset);

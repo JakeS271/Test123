@@ -2547,7 +2547,7 @@ MonoBehaviour:
   readjustAngle: 10
   readjustRate: 0.4
   acceleration: 30
-  maxVelocity: 100
+  maxVelocity: 150
   upDeccelerate: 65
   downAccelerate: 50
   yelOrb: {fileID: 0}
